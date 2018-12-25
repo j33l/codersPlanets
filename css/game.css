@@ -1,0 +1,87 @@
+/* header panel */
+.hPanel{
+	background-color: green;
+	font-size: 50px;
+	text-align: center;
+	color: red;
+	height: 2em;
+	width: 600px;
+}
+
+.ipbuts {
+	border: 10px;
+	border-color: black;
+}
+
+jp{
+	color: blue;
+	font-size: 40px;
+}
+
+/* game display */
+table{
+	background-color: white;  /*change after to white*/
+	border: 5px solid black;
+	border-spacing: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+}
+
+#ul_div{
+	background-color: black;
+	//border: 10px;
+	//border-color: black;
+}
+
+zk{
+	color: red;
+	font-size: 50px;
+}
+
+td{
+	border: none	!important;
+}
+
+hr{
+  color: blue;
+}
+
+#funSelector{
+	color: green;
+}
+
+img{
+	height: 120px;
+	width: 120px;
+}
+
+/* close button */
+#clsbut {
+float: right;
+background-color: red;
+color: white;
+}
+
+#menuImg{
+	padding-top: 0.5px;
+	margin-right: 0.5px;
+	margin-top: 0.5px;
+	height: 2em;
+	width: 2em;
+	border: 10px;
+	float: right;
+}
+
+/* three line menu */
+#menuCls{
+	background-color: green;
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	width: 600px;
+	display: none; /*default hidden*/
+}
+
+.ex {
+	background-color: red;
+}

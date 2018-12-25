@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+  <title>LevMkr</title>
+  <link rel="icon" href="img/gr.png">
+	<link rel="stylesheet" type="text/css" href="css/game.css">
+	<script language="php" src="php/game.php"></script>
+	<script type="text/javascript" src="js/game.js"></script>
+	<script type="text/javascript" src="js/levels.js"></script>
+  <script type="text/javascript" src="js/newLev.js"></script>
+	<script type="text/javascript" src="js/ulmf.js"></script>
+	<script type="text/javascript" src="js/ulF1.js"></script>
+	<script type="text/javascript" src="js/ulF2.js"></script>
+</head>
+<body>
+  <div class="ex">
+    <p>ReadMe:</p>
+    <table id="exTable">
+      <h1>
+      <tr>
+        <td>(11i)</td>
+        <td>(12i)</td>
+        <td>(13i)</td>
+      </tr>
+      <tr>
+        <td>(21i)</td>
+        <td>(22i)</td>
+        <td>(23i)</td>
+      </tr>
+      <tr>
+        <td>(31i)</td>
+        <td>(32i)</td>
+        <td>(33i)</td>
+      </tr>
+      </h1>
+    </table>
+    <p>As shown in the above example of game level structure,<br />
+      there will always a rectangular area to play in.</p>
+    <p>The block ID will assign like " rowNumb colNumb i "(no space in between).
+    <br /> Example: 32i = 3rd row and 2nd column</p>
+  </div>
+  <div class="mkrIps">
+    <h3>Enter number of rows:<input type="text" id="rowIp"></input></h3>
+    <h3>Enter number of columns:<input type="text" id="colIp"></input></h3>
+    <button onclick="getVal()">Create</button>
+  </div>
+</body>

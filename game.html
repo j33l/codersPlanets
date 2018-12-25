@@ -1,0 +1,206 @@
+<!doctype html>
+<head>
+	<title>Coder's Planet</title>
+	<link rel="icon" href="img/di.png">
+	<link rel="stylesheet" type="text/css" href="css/game.css">
+	<script language="php" src="php/game.php"></script>
+	<script type="text/javascript" src="js/game.js"></script>
+	<script type="text/javascript" src="js/levels.js"></script>
+	<script type="text/javascript" src="js/newLev.js"></script>
+	<script type="text/javascript" src="js/ulmf.js"></script>
+	<script type="text/javascript" src="js/ulF1.js"></script>
+	<script type="text/javascript" src="js/ulF2.js"></script>
+	<!--needed feedback portals-->
+</head>
+<body onload="init()">
+	<!--three line  menu bolck-->
+	<div id="menuCls">
+		<gh style="color:white;font-size:30px;">Setting</gh>
+		<button onclick="menuBut()" value="X" id="clsbut" >X</button>
+		<br>
+		<button onclick="bgMusic()">Music:<oz id="onoff">on</oz></button>
+		<button onclick="feedbackme()"><oz id="fdbk">Feedback</oz></button>
+		<br>
+		<h1 style="color:white;font-size:20px;">Developers</h1>
+		<p>{;} jPatel email: zk@jptl.rf.gd</p>
+		<p>{;} sSoni email: ***</p>
+		<p>&lt;&#47;&gt; nShah email: ***</p> <!-- text: </> --->
+	</div>
+
+	<!-- header panel -->
+	<div class="hPanel">
+		<b>Coder's Planet</b>
+		<img id="menuImg" src="img/menu.png" alt="menu" onclick="menuBut()">
+	</div>
+
+	<!--level sel-->
+		<div class="levCh">
+			<b>Planet:</b>
+			<select type="dropdown" id="stgIp">
+				<option value="B">The Basics</option>
+				<option value="F">Functions</option>
+				<option value="L">The Loop</option>
+				<option value="C">CommingSoon</option>
+			</select>
+			<b>Area:</b>
+			<input type="number" id="levIp" />
+			<button onclick="levSel()">play</button>
+			<button onclick="help()">help</button>
+			<!--try arguments lev(3) , dropdown menu -->
+		</div>
+
+<!-- Game display panel -->
+<div id="tableDiv">
+		<table id="dsp">
+			<!-- before Automation n dynamic structure according to level
+	<tr>
+			<td><img id="11i" src="img/ti.png"></td>
+			<td><img id="12i" src="img/ti.png"></td>
+			<td><img id="13i" src="img/ti.png"></td>
+			<td><img id="14i" src="img/ti.png"></td>
+			<td><img id="15i" src="img/ti.png"></td>
+		</tr>
+		<tr>
+			<td><img id="21i" src="img/ti.png"></td>
+			<td><img id="22i" src="img/ti.png"></td>
+			<td><img id="23i" src="img/ti.png"></td>
+			<td><img id="24i" src="img/ti.png"></td>
+			<td><img id="25i" src="img/ti.png"></td>
+		</tr>
+		<tr>
+			<td><img id="31i" src="img/ti.png"></td>
+			<td><img id="32i" src="img/ti.png"></td>
+			<td><img id="33i" src="img/ti.png"></td>
+			<td><img id="34i" src="img/ti.png"></td>
+			<td><img id="35i" src="img/ti.png"></td>
+		</tr>
+		<tr>
+			<td><img id="41i" src="img/ti.png"></td>
+			<td><img id="42i" src="img/ti.png"></td>
+			<td><img id="43i" src="img/ti.png"></td>
+			<td><img id="44i" src="img/ti.png"></td>
+			<td><img id="45i" src="img/ti.png"></td>
+		</tr>
+		<tr>
+			<td><img id="51i" src="img/ti.png"></td>
+			<td><img id="52i" src="img/ti.png"></td>
+			<td><img id="53i" src="img/ti.png"></td>
+			<td><img id="54i" src="img/ti.png"></td>
+			<td><img id="55i" src="img/ti.png"></td>
+		</tr>
+	-->
+		</table>
+</div>
+
+	<zk>Your Score:</zk>
+	<zk id="pnt">0</zk>
+	<zk>/3</zk>
+
+<!-- user input Display panels -->
+	<div id="ul_div">
+		<!-- main func. input Display panel -->
+				<hr />
+				<jp id="mainFuntxt1">main(<as id="mt"></as>) {</jp> <br />
+		<div id="ulMain" onclick="selulm()">
+			<!-- now dynamic ulIp mkr
+			<img id="ul1" src="img/ti.png">
+			<img id="ul2" src="img/ti.png">
+			<img id="ul3" src="img/ti.png">
+			<img id="ul4" src="img/ti.png">
+			<img id="ul5" src="img/ti.png">
+			<img id="ul6" src="img/ti.png">
+			<img id="ul7" src="img/ti.png">
+			<img id="ul8" src="img/ti.png">
+			<img id="ul9" src="img/ti.png">
+			<img id="ul10" src="img/ti.png">
+			<img id="ul11" src="img/ti.png">
+			<img id="ul12" src="img/ti.png">
+			<img id="ul13" src="img/ti.png">
+			<img id="ul14" src="img/ti.png">
+			<img id="ul15" src="img/ti.png">
+		-->
+		</div>
+				<br />
+				<jp id="mainFuntxt2"> } </jp>
+
+	<!-- func.1 input Display panel -->
+		<hr />
+		<jp id="Fun1txt1">fun1(<as id="f1t"></as>) {</jp> <br />
+		<div id="ulF1" onclick="selulf1()">
+			<!--
+			<img id="1ul1" src="img/ti.png">
+			<img id="1ul2" src="img/ti.png">
+			<img id="1ul3" src="img/ti.png">
+			<img id="1ul4" src="img/ti.png">
+			<img id="1ul5" src="img/ti.png">
+			<img id="1ul6" src="img/ti.png">
+			<img id="1ul7" src="img/ti.png">
+			<img id="1ul8" src="img/ti.png">
+			<img id="1ul9" src="img/ti.png">
+			<img id="1ul10" src="img/ti.png">
+			<img id="1ul11" src="img/ti.png">
+			<img id="1ul12" src="img/ti.png">
+			<img id="1ul13" src="img/ti.png">
+			<img id="1ul14" src="img/ti.png">
+			<img id="1ul15" src="img/ti.png">
+		-->
+		</div>
+		<br />
+		<jp id="Fun1txt2"> } </jp>
+
+		<!-- func.2 input Display panel -->
+		<hr />
+		<jp id="Fun2txt1">fun2(<as id="f2t"></as>) {</jp>	<br />
+		<div id="ulF2" onclick="selulf2()">
+			<!--
+			<img id="2ul1" src="img/ti.png">
+			<img id="2ul2" src="img/ti.png">
+			<img id="2ul3" src="img/ti.png">
+			<img id="2ul4" src="img/ti.png">
+			<img id="2ul5" src="img/ti.png">
+			<img id="2ul6" src="img/ti.png">
+			<img id="ul7" src="img/ti.png">
+			<img id="2ul8" src="img/ti.png">
+			<img id="2ul9" src="img/ti.png">
+			<img id="2ul10" src="img/ti.png">
+			<img id="2ul11" src="img/ti.png">
+			<img id="2ul12" src="img/ti.png">
+			<img id="2ul13" src="img/ti.png">
+			<img id="2ul14" src="img/ti.png">
+			<img id="2ul15" src="img/ti.png">
+		-->
+		</div>
+		<br />
+		<jp id="Fun2txt2"> } </jp>
+	</div>
+	<hr />
+
+<!--input buttons-->
+	<div class="ipbuts">
+		<img id="ruBut" src="img/ru.png" onclick="runUl()">
+		<img id="" src="img/bk.png" onclick="()">
+		<img id="f1But" src="img/re.png" onclick="retryLev()">
+		<br>
+		<img id="leBut" src="img/up.png" onclick="moFwd()">
+		<img id="upBut" src="img/rl.png" onclick="moRl()">
+		<img id="doBut" src="img/rr.png" onclick="moRr()">
+		<!-- grab button !-not working -->
+		<img id="riBut" src="!-img/gr.png" onclick="!-moGr()">
+		<img id="grBut" src="img/f1.png" onclick="moF1()">
+		<img id="grBut" src="img/f2.png" onclick="moF2()">
+	</div>
+
+<!-- audio files loader -->
+	<div class="auds">
+		<audio id="grbAud">
+			<source src="aud/grabWav.wav" type="audio/wav">
+		</audio>
+		<audio id="movAud">
+			<source src="aud/moveMp3.mp3" type="audio/mp3">
+		</audio>
+		<audio id="bgAud">
+			<source src="aud/bgMp3.mp3" type="audio/mp3">
+		</audio>
+	</div>
+
+</body>
