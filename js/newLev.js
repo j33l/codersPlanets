@@ -1,6 +1,6 @@
 /* structure to make new levels
-function lev$levNumber$stageCharector() {
-  curLev=lev$levNumber;
+function lev<levNumber><stageCharector> () {
+  curLev=lev<levNumber>;
   avlLev=curLev; //no change
   curLoc="32i"; //ufo location
   curDeg=0; //ufo degree

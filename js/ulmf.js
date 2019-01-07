@@ -1,37 +1,59 @@
 // main func. i/p Runner
 // (NEW)
-function runUl() {
-	var ulMain=document.getElementById("mt").innerHTML;
-	if (runClk <= ulMain) {
-		var mou = "ul" + runClk;
+function runUl(myFun=0) {
+	var ipNumb="";
+	var funClk=0;
+	var funMou="";
+
+	if(myFun==2) {
+		ipNumb="f2t";
+		funClk=runClk2;
+		funMou ="2ul";
+	}
+	else if (myFun==1) {
+		ipNumb="f1t";
+		funClk=runClk1;
+		funMou ="1ul";
+	}
+	else {
+		ipNumb="mt";
+		funClk=runClk;
+		funMou ="ul";
+	}
+	var ulNumb=document.getElementById(ipNumb).innerHTML;
+	if (funClk <= ulNumb) {
+		var mou = funMou+""+ funClk;
 		var myUl=document.getElementById(mou).src;
 		var myUlLen=myUl.length;
-		var myUlLenFi=myUlLen-10;
+		var myUlLenFi=myUlLen-6;
 		var myUlFi=myUl.substring(myUlLenFi,myUlLen);
 
-			if(myUlFi === 'img/f1.png'){
-				runUlf1();
+			if(myUlFi === 'f1.png'){
+				runUl(1);
 			}
-			else if(myUlFi === 'img/f2.png'){
-				runUlf2();
+			else if(myUlFi === 'f2.png'){
+				runUlf2(2);
 			}
-			else if(myUlFi === 'img/up.png'){
+			else if(myUlFi === 'up.png'){
 				moFwdRun();
 			}
-			else if(myUlFi === 'img/rl.png'){
+			else if(myUlFi === 'rl.png'){
 				moRlRun();
 			}
-			else if(myUlFi === 'img/rr.png'){
+			else if(myUlFi === 'rr.png'){
 				moRrRun();
 			}
-			else if(myUlFi === 'img/gr.png'){
+			else if(myUlFi === 'gr.png'){
 				moGrRun();
 			}
-			runClk++;
+			funClk++;
 			setTimeout(runUl, 500);
 	}
+	else {
+		//runClk=funClk;
+	}
 }
-
+/*
 // func.1 i/p Runner
 // compressed loops (NEW)
 function runUlf1() {
@@ -99,3 +121,4 @@ function runUlf2() {
 			setTimeout(runUlf2, 500);
 	}
 }
+*/

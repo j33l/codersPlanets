@@ -29,13 +29,7 @@ var mnu=1; // three line menu on/off
 
 // refreshing current level
 function retryLev() {
-	if (curLev==1) {
-		lev1();
-	}
-	else if (curLev==2) {
-		lev2();
-	}
-
+	//	levSel();
 	// initilizing all clocks/clicks
 	clk=1;
 	clk1=1;

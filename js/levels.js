@@ -58,6 +58,7 @@ function ulMkr(numb,dId) { // MAX(numb)=15 because of runUl()
 
 function levSel () {
   try {
+    retryLev();
     var l = "lev"+document.getElementById("levIp").value+""+document.getElementById("stgIp").value;
     eval(l+"()");
   }
