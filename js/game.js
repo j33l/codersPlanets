@@ -1,7 +1,7 @@
 /* proj. JS(webGame) date: dec 2017
 * last visit: dec 2018
 *	cdr: zk n some members of team studity
-*	4 fun n lea.
+*	4 fun n lea., ProsedurOrieantedProgramming approch
 *	dev.'s contack email: zk@jptl.rf.gd
 */
 
@@ -20,6 +20,7 @@ var runClk1=1; // func.1's
 var runClk2=1; // func.2's
 
 var curLoc=""; // ufo's location
+var preImg=""; // previous loc. content
 var curDeg=0; // ufo's degree
 var avlLev=0; // available levels
 
@@ -27,15 +28,12 @@ var point=0;
 var bg=1; // music on/off
 var mnu=1; // three line menu on/off
 
+var d = 0; //dim index
+var allDims = []; //all dim.s of cur. lev.
+
 // refreshing current level
 function retryLev() {
-	if (curLev==1) {
-		lev1();
-	}
-	else if (curLev==2) {
-		lev2();
-	}
-
+	//	levSel();
 	// initilizing all clocks/clicks
 	clk=1;
 	clk1=1;
@@ -52,6 +50,9 @@ function retryLev() {
 
 	curDeg=0;
 	point=0;
+
+	d = 0;
+	//allDims = NULL;
 }
 /* REFRANCE Function
 function moveit(){
@@ -189,6 +190,8 @@ function trapMaker(myid) {
 
 function dimMaker(myid1) {
 	document.getElementById(myid1).src="img/di.png";
+	allDims[d++] = myid1;
+	document.getElementById("maxPnt").innerHTML=allDims.length;
 }
 
 // moves ufo left
@@ -215,20 +218,22 @@ function moLeRun() {
 	if(op !== "img/la.png"){
 		document.getElementById(ufoTile).src="img/uf.png";
 		document.getElementById(ufoTile).style.transform='rotate(270deg)';
-		document.getElementById(tiTile).src="img/ti.png";
+		for (var o = 0; o < allDims.length; o++) {
+			if (curLoc == allDims[o]) {
+				document.getElementById(tiTile).src="img/di.png";
+				document.getElementById(tiTile).style.transform='rotate(0deg)';
+				console.log("333333333");
+				break;
+			}
+			else {
+				document.getElementById(tiTile).src="img/ti.png";
+			}
+		}
 		curLoc=ufoTile;
 		moveAud();
 		console.log("ufoTile->>>"+ufoTile);
 		console.log("curLoc->>>"+curLoc);
 	}
-
-	if(op === "img/di.png"){
-		point++;
-		document.getElementById("pnt").innerHTML=point;
-		grbAud();
-	}
-
-	console.log("moLe"+"ufoTile"+ufoTile);
 	leClk++;
 }
 
@@ -254,16 +259,22 @@ function moUpRun() {
 	var miLenFi = miLen-10;
 	var op=mi.substring(miLenFi,miLen);
 	if(op !== "img/la.png"){
-	document.getElementById(ufoTile).src="img/uf.png";
-	document.getElementById(tiTile).src="img/ti.png";
-	console.log("moUp"+"ufoTile"+ufoTileFst);
-	curLoc=ufoTile;
-	moveAud();
-	}
-	if(op === "img/di.png"){
-		point++;
-		document.getElementById("pnt").innerHTML=point;
-		grbAud();
+		document.getElementById(ufoTile).src="img/uf.png";
+		for (var o = 0; o < allDims.length; o++) {
+			if (curLoc == allDims[o]) {
+				document.getElementById(tiTile).src="img/di.png";
+				document.getElementById(tiTile).style.transform='rotate(0deg)';
+				console.log("333333333");
+				break;
+			}
+			else {
+				document.getElementById(tiTile).src="img/ti.png";
+			}
+		}
+		curLoc=ufoTile;
+		moveAud();
+		console.log("ufoTile->>>"+ufoTile);
+		console.log("curLoc->>>"+curLoc);
 	}
 	upClk++;
 }
@@ -295,15 +306,21 @@ function moDoRun() {
 	if(op !== "img/la.png"){
 		document.getElementById(ufoTile).src="img/uf.png";
 		document.getElementById(ufoTile).style.transform='rotate(180deg)';
-		document.getElementById(tiTile).src="img/ti.png";
-		console.log("moDo"+"ufoTile"+ufoTileFst);
+		for (var o = 0; o < allDims.length; o++) {
+			if (curLoc == allDims[o]) {
+				document.getElementById(tiTile).src="img/di.png";
+				document.getElementById(tiTile).style.transform='rotate(0deg)';
+				console.log("333333333");
+				break;
+			}
+			else {
+				document.getElementById(tiTile).src="img/ti.png";
+			}
+		}
 		curLoc=ufoTile;
 		moveAud();
-	}
-	if(op === "img/di.png"){
-		point++;
-		document.getElementById("pnt").innerHTML=point;
-		grbAud();
+		console.log("ufoTile->>>"+ufoTile);
+		console.log("curLoc->>>"+curLoc);
 	}
 	doClk++;
 }
@@ -331,22 +348,26 @@ function moRiRun() {
 	var miLenFi = miLen-10;
 	var op=mi.substring(miLenFi,miLen);
 	console.log("OOOOP->"+op);
+
 	if(op !== "img/la.png"){
 		document.getElementById(ufoTile).src="img/uf.png";
 		document.getElementById(ufoTile).style.transform='rotate(90deg)';
-		document.getElementById(tiTile).src="img/ti.png";
+		for (var o = 0; o < allDims.length; o++) {
+			if (curLoc == allDims[o]) {
+				document.getElementById(tiTile).src="img/di.png";
+				document.getElementById(tiTile).style.transform='rotate(0deg)';
+				console.log("333333333");
+				break;
+			}
+			else {
+				document.getElementById(tiTile).src="img/ti.png";
+			}
+		}
 		curLoc=ufoTile;
 		moveAud();
 		console.log("ufoTile->>>"+ufoTile);
 		console.log("curLoc->>>"+curLoc);
 	}
-
-	if(op === "img/di.png"){
-		point++;
-		document.getElementById("pnt").innerHTML=point;
-		grbAud();
-	}
-
 	console.log("moRi"+"ufoTile"+ufoTile);
 	riClk++;
 }
@@ -379,7 +400,14 @@ function moRrRun() {
 
 // to grab dimonds !-not working
 function moGrRun() {
-	console.log("???im Grabbing!");
+	for (var o = 0; o < allDims.length; o++) {
+		if (curLoc == allDims[o]) {
+			point++;
+			document.getElementById("pnt").innerHTML=point;
+			grbAud();
+			allDims[o] = "";
+		}
+	}
 }
 
 // user i/p indicator forward

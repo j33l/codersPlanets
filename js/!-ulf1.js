@@ -1,4 +1,5 @@
 // func.1 i/p Runner
+//ORIGINAL
 function runUlf1() {
 	if(runClk1==1){
 

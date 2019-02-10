@@ -1,23 +1,33 @@
-var clk=1;
-var clk1=1;
-var clk2=1;
+/* proj. JS(webGame) date: dec 2017
+* last visit: dec 2018
+*	cdr: zk n some members of team studity
+*	4 fun n lea.
+*	dev.'s contack email: zk@jptl.rf.gd
+*/
+
+var clk=1; // main func.'s
+var clk1=1; // func.1's
+var clk2=1; // func.2's
 var selfun=0; // func. panel Selector
 
-var leClk=1;
-var upClk=1;
-var doClk=1;
-var riClk=1;
+var riClk=1; // right
+var leClk=1; //left
+var upClk=1; // up
+var doClk=1; // odwn
 
 var runClk=1; // main func.'s
-var runClk1=1;
-var runClk2=1;
-var curLoc="";
-var curDeg=0;
+var runClk1=1; // func.1's
+var runClk2=1; // func.2's
+
+var curLoc=""; // ufo's location
+var curDeg=0; // ufo's degree
+var avlLev=0; // available levels
+
 var point=0;
+var bg=1; // music on/off
+var mnu=1; // three line menu on/off
 
-var bg=1;
-var mnu=1;
-
+// refreshing current level
 function retryLev() {
 	if (curLev==1) {
 		lev1();
@@ -25,12 +35,21 @@ function retryLev() {
 	else if (curLev==2) {
 		lev2();
 	}
+
+	// initilizing all clocks/clicks
 	clk=1;
+	clk1=1;
+	clk2=1;
+
 	leClk=1;
 	upClk=1;
 	doClk=1;
 	riClk=1;
+
 	runClk=1;
+	runClk1=1;
+	runClk2=1;
+
 	curDeg=0;
 	point=0;
 }
@@ -50,8 +69,9 @@ function moveit(){
 	document.getElementsByClassName(neyu)[0].classList.remove(neyu);
 }
 */
+
+// select main func. i/p panel
 function selulm(){
-	// select main func. i/p panel
 	document.getElementById("mainFuntxt1").style.color="red";
 	document.getElementById("mainFuntxt2").style.color="red";
 	document.getElementById("Fun1txt1").style.color="blue";
@@ -61,8 +81,8 @@ function selulm(){
 	selfun=0;
 }
 
+// select func.1 i/p panel
 function selulf1(){
-	// select func.1 i/p panel
 	selfun=1;
 	document.getElementById("mainFuntxt1").style.color="blue";
 	document.getElementById("mainFuntxt2").style.color="blue";
@@ -72,8 +92,8 @@ function selulf1(){
 	document.getElementById("Fun2txt2").style.color="blue";
 }
 
+// select func.2 i/p panel
 function selulf2(){
-	// select func.2 i/p panel
 	document.getElementById("mainFuntxt1").style.color="blue";
 	document.getElementById("mainFuntxt2").style.color="blue";
 	document.getElementById("Fun1txt1").style.color="blue";
@@ -157,7 +177,7 @@ function bgMusic(){
 }
 
 function help() {
-	window.alert("Welcome To Coder\'s Planet.\nUse your logic to grab all 3 dimonds\nusing Blue UFO");
+	window.alert("Welcome To Coder\'s Planet.\nUse your logic to grab all dimonds\nusing Blue UFO");
 }
 
 // for loop to check border
@@ -171,6 +191,7 @@ function dimMaker(myid1) {
 	document.getElementById(myid1).src="img/di.png";
 }
 
+// moves ufo left
 function moLeRun() {
 	var ufoTile=curLoc;
 	var tiTile="";
@@ -211,6 +232,7 @@ function moLeRun() {
 	leClk++;
 }
 
+// moves ufo up
 function moUpRun() {
 	var ufoTile=curLoc;
 	var tiTile="";
@@ -246,6 +268,8 @@ function moUpRun() {
 	upClk++;
 }
 
+
+// moves ufo down
 function moDoRun() {
 	var ufoTile=curLoc;
 	var tiTile="";
@@ -284,6 +308,8 @@ function moDoRun() {
 	doClk++;
 }
 
+
+// moves ufo right
 function moRiRun() {
 	var ufoTile=curLoc;
 	var tiTile="";
@@ -325,6 +351,7 @@ function moRiRun() {
 	riClk++;
 }
 
+// moves ufo forward
 function moFwdRun() {
 	if(curDeg==0){
 		moUpRun();
@@ -340,26 +367,22 @@ function moFwdRun() {
 	}
 }
 
+// rotate ufo anticlock wise
 function moRlRun() {
 	rtnccw();
 }
 
+// rotate ufo clock wise
 function moRrRun() {
 	rtncw();
 }
 
+// to grab dimonds !-not working
 function moGrRun() {
 	console.log("???im Grabbing!");
 }
 
-function moF1Run() {
-	console.log("???this' f1!");
-}
-
-function moF2Run() {
-	console.log("???this' f2!");
-}
-
+// user i/p indicator forward
 function moFwd() {
 	if (selfun==0) {
 		document.getElementById("ul"+clk).src="img/up.png";
@@ -376,6 +399,7 @@ function moFwd() {
 	}
 }
 
+// user i/p indicator rotate left
 function moRl() {
 	if(selfun==0){
 		document.getElementById("ul"+clk).src="img/rl.png";
@@ -391,6 +415,7 @@ function moRl() {
 	}
 }
 
+// user i/p indicator rotate right
 function moRr() {
 	if(selfun==0){
 		document.getElementById("ul"+clk).src="img/rr.png";
@@ -406,11 +431,13 @@ function moRr() {
 	}
 }
 
+// user i/p indicator grabbing !-not working
 function moGr() {
 	document.getElementById("ul"+clk).src="img/gr.png";
 	clk++;
 }
 
+// user i/p indicator func.1
 function moF1() {
 	if(selfun==0){
 		document.getElementById("ul"+clk).src="img/f1.png";
@@ -426,6 +453,7 @@ function moF1() {
 	}
 }
 
+// user i/p indicator func.2
 function moF2() {
 	if(selfun==0){
 		document.getElementById("ul"+clk).src="img/f2.png";
@@ -438,92 +466,6 @@ function moF2() {
 	if (selfun==2) {
 		document.getElementById("2ul"+clk2).src="img/f2.png";
 		clk2++;
-	}
-}
-
-// main func. i/p RUNner
-function runUl() {
-
-	if(runClk==1){
-		var myUl=document.getElementById('ul1').src;
-	}
-	else if(runClk==2){
-		var myUl=document.getElementById('ul2').src;
-	}
-	else if(runClk==3){
-		var myUl=document.getElementById('ul3').src;
-	}
-	else if(runClk==4){
-		var myUl=document.getElementById('ul4').src;
-	}
-	else if(runClk==5){
-		var myUl=document.getElementById('ul5').src;
-	}
-	else if(runClk==6){
-		var myUl=document.getElementById('ul6').src;
-	}
-	else if(runClk==7){
-		var myUl=document.getElementById('ul7').src;
-	}
-	else if(runClk==8){
-		var myUl=document.getElementById('ul8').src;
-	}
-	else if(runClk==9){
-		var myUl=document.getElementById('ul9').src;
-	}
-	else if(runClk==10){
-		var myUl=document.getElementById('ul10').src;
-	}
-	else if(runClk==11){
-		var myUl=document.getElementById('ul11').src;
-	}
-	else if(runClk==12){
-		var myUl=document.getElementById('ul12').src;
-	}
-	else if(runClk==13){
-		var myUl=document.getElementById('ul13').src;
-	}
-	else if(runClk==14){
-		var myUl=document.getElementById('ul14').src;
-	}
-	else if(runClk==15){
-		var myUl=document.getElementById('ul15').src;
-	}
-
-		var myUlLen=myUl.length;
-		var myUlLenFi=myUlLen-10;
-		var myUlFi=myUl.substring(myUlLenFi,myUlLen);
-
-		if(runClk == 16) {
-			runClk = 1;
-			continue;
-		}
-		else if(myUlFi === 'img/f1.png'){
-			runUlf1();
-		}
-		else if(myUlFi === 'img/f2.png'){
-			runUlf2();
-		}
-		else if(myUlFi === 'img/up.png'){
-			moFwdRun();
-		}
-		else if(myUlFi === 'img/rl.png'){
-			moRlRun();
-		}
-		else if(myUlFi === 'img/rr.png'){
-			moRrRun();
-		}
-		else if(myUlFi === 'img/gr.png'){
-			moGrRun();
-		}
-		else if(myUlFi === 'img/f1.png'){
-			moF1Run();
-		}
-		else if(myUlFi === 'img/f2.png'){
-			moF2Run();
-		}
-		runClk++;
-		setTimeout(runUl, 500);
 	}
 }
 
@@ -571,9 +513,4 @@ function grbAud(){
 
 function moveAud(){
 	document.getElementById("grbAud").play();
-}
-
-function myTest() {
-	document.getElementById(curLoc).style.transform="rotate(90deg)";
-	console.log("testRuns");
 }

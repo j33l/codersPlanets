@@ -58,11 +58,12 @@ function ulMkr(numb,dId) { // MAX(numb)=15 because of runUl()
 
 function levSel () {
   try {
+    retryLev();
     var l = "lev"+document.getElementById("levIp").value+""+document.getElementById("stgIp").value;
     eval(l+"()");
   }
   catch {
-    window.alert(`"Invalid Input \n available levels from 1 to `+avlLev+`."`);
+    //window.alert(`"Invalid Input \n available levels from 1 to `+avlLev+`."`);
   }
 }
 
