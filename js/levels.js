@@ -63,7 +63,7 @@ function levSel () {
     eval(l+"()");
   }
   catch {
-    window.alert(`"Invalid Input \n available levels from 1 to `+avlLev+`."`);
+    //window.alert(`"Invalid Input \n available levels from 1 to `+avlLev+`."`);
   }
 }
 
