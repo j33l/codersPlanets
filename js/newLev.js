@@ -16,7 +16,7 @@ function lev<levNumber><stageCharector> () {
 }
 */
 
-function lev0B() { //for test
+function lev0C() { //for test
   curLev=0;
   avlLev++;
   curLoc="22i";

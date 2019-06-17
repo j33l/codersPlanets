@@ -3,7 +3,6 @@
   <title>LevMkr</title>
   <link rel="icon" href="img/gr.png">
 	<link rel="stylesheet" type="text/css" href="css/game.css">
-	<script language="php" src="php/game.php"></script>
 	<script type="text/javascript" src="js/game.js"></script>
 	<script type="text/javascript" src="js/levels.js"></script>
   <script type="text/javascript" src="js/newLev.js"></script>
@@ -11,7 +10,7 @@
 	<script type="text/javascript" src="js/ulF1.js"></script>
 	<script type="text/javascript" src="js/ulF2.js"></script>
 </head>
-<body>
+<body bgcolor="green">
   <div class="ex">
     <p>ReadMe:</p>
     <table id="exTable">
@@ -39,8 +38,26 @@
     <br /> Example: 32i = 3rd row and 2nd column</p>
   </div>
   <div class="mkrIps">
-    <h3>Enter number of rows:<input type="text" id="rowIp"></input></h3>
-    <h3>Enter number of columns:<input type="text" id="colIp"></input></h3>
-    <button onclick="getVal()">Create</button>
+
+      levelNumber:<input type="number" id="lv0"> <br>
+      initialUFOLocation:<input type="number" id="lv1"> <br>
+      initialUFODegree:<input type="number" id="lv2"> <br>
+      levelWidth:<input type="number" id="lv3"> <br>
+      levelHeight:<input type="number" id="lv4"> <br>
+      mainFunInputNumber:<input type="number" id="lv5"> <br>
+      fun1InputNumber:<input type="number" id="lv6"> <br>
+      fun2InputNumber:<input type="number" id="lv7"> <br>
+
+      [trap and dimond thind: dynamicaly Done]
+
+
+    <input type="number" id="lv8"> <br>
+    <input type="number" id="lv9"> <br>
+
+    <button onclick="createLev()">Create</button>
+  </div>
+
+  <div id="levScript">
+
   </div>
 </body>

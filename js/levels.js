@@ -61,9 +61,11 @@ function levSel () {
     retryLev();
     var l = "lev"+document.getElementById("levIp").value+""+document.getElementById("stgIp").value;
     eval(l+"()");
+
+    throw document.getElementById("levIp").value+""+document.getElementById("stgIp").value;
   }
-  catch {
-    //window.alert(`"Invalid Input \n available levels from 1 to `+avlLev+`."`);
+  catch(e) {
+    window.alert("Level "+e+"");
   }
 }
 
@@ -92,9 +94,59 @@ function levChanger() {
 */
 
 //##################################tbc###########################
-// for user level making functining
-function getVal() {
-  var rowL = document.getElementById("rowIp").innerHTML;
-  var colL = document.getElementById("colIp").innerHTML;
+// for user custom level making functining
+function createLev() {
+  var levVals = [];
+  var size =10;
+  for (var i = 0; i < size; i++) {
+    levVals[i] = document.getElementById('lv'+i+"").value;
+  }
+  document.getElementById("levScript").innerHTML = `
+    <script type="text/jacascript">
+      function lev` + levVals[0] + `C() {
+        curLoc = "` + levVals[1] + `i";
+        curDeg =` +levVals[2] + `;
+        levMkr(` + levVals[3] +`,`+ levVals[4] + `);
+        ulMkr(` + levVals[5] +`,"ulMain");
+        ulMkr(` + levVals[6] +`,"ulF1");
+        ulMkr(` + levVals[7] +`,"ulF2");
+        trapMaker("` + levVals[8] +`i");
+        dimMaker("` + levVals[9] +`i");
 
+
+      }
+    </script>
+  `;
 }
+
+function createLev() {
+  var levVals = [];
+  var size =10;
+  for (var i = 0; i < size; i++) {
+    levVals[i] = document.getElementById('lv'+i+"").value;
+  }
+  var scr = document.createElement("script");
+  var cont = document.createTextNode(`
+    function lev` + levVals[0] + `C() {
+      curLoc = "` + levVals[1] + `i";
+      curDeg =` +levVals[2] + `;
+      levMkr(` + levVals[3] +`,`+ levVals[4] + `);
+      ulMkr(` + levVals[5] +`,"ulMain");
+      ulMkr(` + levVals[6] +`,"ulF1");
+      ulMkr(` + levVals[7] +`,"ulF2");
+      trapMaker("` + levVals[8] +`i");
+      dimMaker("` + levVals[9] +`i");
+    }`);
+  scr.appendChild(cont);
+  var ele = document.getElementById('levScript');
+  ele.appendChild(scr);
+}
+/*
+function createNumIps(var numId, var ipNum){
+  var j = document.getElementById(ipNum).value;
+  var k = document.getElementById(numId).innerHTML;
+  for (var i = 0; i < j; i++) {
+    k += `<input type="number" id="lv9">`;
+  }
+}
+*/

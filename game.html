@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="js/levels.js"></script>
 	<script type="text/javascript" src="js/newLev.js"></script>
 	<script type="text/javascript" src="js/ulmf.js"></script>
+
 	<!--needed feedback portals-->
 </head>
 <body onload="init()">
@@ -16,8 +17,9 @@
 		<gh style="color:white;font-size:30px;">Setting</gh>
 		<button onclick="menuBut()" value="X" id="clsbut" >X</button>
 		<br>
-		<button onclick="bgMusic()">Music:<oz id="onoff">on</oz></button>
+		<button onclick="bgMusicControl()">Music:<oz id="onoff">off</oz></button>
 		<button onclick="feedbackme()"><oz id="fdbk">Feedback</oz></button>
+		<button onclick="gmeOrFun()"><oz id="gof">Custom Area</oz></button>
 		<br>
 		<h1 style="color:white;font-size:20px;">Developers</h1>
 		<p>{;} jPatel email: zk@jptl.rf.gd</p>
@@ -38,7 +40,7 @@
 				<option value="B">The Basics</option>
 				<option value="F">Functions</option>
 				<option value="L">The Loop</option>
-				<option value="C">CommingSoon</option>
+				<option value="C">Custom</option>
 			</select>
 			<b>Area:</b>
 			<input type="number" id="levIp" />
@@ -47,159 +49,141 @@
 			<!--try arguments lev(3) , dropdown menu -->
 		</div>
 
-<!-- Game display panel -->
-<div id="tableDiv">
-		<table id="dsp">
-			<!-- before Automation n dynamic structure according to level
-	<tr>
-			<td><img id="11i" src="img/ti.png"></td>
-			<td><img id="12i" src="img/ti.png"></td>
-			<td><img id="13i" src="img/ti.png"></td>
-			<td><img id="14i" src="img/ti.png"></td>
-			<td><img id="15i" src="img/ti.png"></td>
-		</tr>
-		<tr>
-			<td><img id="21i" src="img/ti.png"></td>
-			<td><img id="22i" src="img/ti.png"></td>
-			<td><img id="23i" src="img/ti.png"></td>
-			<td><img id="24i" src="img/ti.png"></td>
-			<td><img id="25i" src="img/ti.png"></td>
-		</tr>
-		<tr>
-			<td><img id="31i" src="img/ti.png"></td>
-			<td><img id="32i" src="img/ti.png"></td>
-			<td><img id="33i" src="img/ti.png"></td>
-			<td><img id="34i" src="img/ti.png"></td>
-			<td><img id="35i" src="img/ti.png"></td>
-		</tr>
-		<tr>
-			<td><img id="41i" src="img/ti.png"></td>
-			<td><img id="42i" src="img/ti.png"></td>
-			<td><img id="43i" src="img/ti.png"></td>
-			<td><img id="44i" src="img/ti.png"></td>
-			<td><img id="45i" src="img/ti.png"></td>
-		</tr>
-		<tr>
-			<td><img id="51i" src="img/ti.png"></td>
-			<td><img id="52i" src="img/ti.png"></td>
-			<td><img id="53i" src="img/ti.png"></td>
-			<td><img id="54i" src="img/ti.png"></td>
-			<td><img id="55i" src="img/ti.png"></td>
-		</tr>
-	-->
-		</table>
+<!-- Game area -->
+<div id="gameArea">
+
+	<!-- Game display panel -->
+	<div id="tableDiv">
+			<table id="dsp">
+			</table>
+	</div>
+
+		<zk>Your Score:</zk>
+		<zk id="pnt">0</zk>
+		<zk>/</zk>
+		<zk id="maxPnt">0</zk>
+
+	<!-- user input Display panels -->
+		<div id="ul_div">
+			<!-- main func. input Display panel -->
+					<hr />
+					<jp id="mainFuntxt1">main(<as id="mt"></as>) {</jp> <br />
+			<div id="ulMain" onclick="selulm()">
+			</div>
+					<br />
+					<jp id="mainFuntxt2"> } </jp>
+
+		<!-- func.1 input Display panel -->
+			<hr />
+			<jp id="Fun1txt1">fun1(<as id="f1t"></as>) {</jp> <br />
+			<div id="ulF1" onclick="selulf1()">
+			</div>
+			<br />
+			<jp id="Fun1txt2"> } </jp>
+
+			<!-- func.2 input Display panel -->
+			<hr />
+			<jp id="Fun2txt1">fun2(<as id="f2t"></as>) {</jp>	<br />
+			<div id="ulF2" onclick="selulf2()">
+			</div>
+			<br />
+			<jp id="Fun2txt2"> } </jp>
+		</div>
+		<hr />
+
+	<!--input buttons-->
+		<div class="ipbuts">
+			<img id="ruBut" src="img/ru.png" onclick="runUl()">
+			<img id="" src="img/bk.png" onclick="()">
+			<img id="f1But" src="img/re.png" onclick="levSel()">
+			<br>
+			<img id="leBut" src="img/up.png" onclick="moFwd()">
+			<img id="upBut" src="img/rl.png" onclick="moRl()">
+			<img id="doBut" src="img/rr.png" onclick="moRr()">
+			<!-- grab button !-not working -->
+			<img id="riBut" src="img/gr.png" onclick="moGr()">
+			<img id="grBut" src="img/f1.png" onclick="moF1()">
+			<img id="grBut" src="img/f2.png" onclick="moF2()">
+		</div>
+
+	<!-- audio files loader -->
+		<div class="auds">
+			<audio id="winSound">
+				<source src="aud/winSound.wav" type="audio/wav">
+			</audio>
+			<audio id="lostSound">
+				<source src="aud/lostSound.wav" type="audio/wav">
+			</audio>
+			<audio id="moveSound">
+				<source src="aud/moveSound.mp3" type="audio/mp3">
+			</audio>
+			<audio id="grabSound">
+				<source src="aud/grabSound.wav" type="audio/wav">
+			</audio>
+			<audio id="bgMusic">
+				<source src="aud/bgMusic.mp3" type="audio/mp3">
+			</audio>
+		</div>
+	</div>
+
+<!-- custom fun making area -->
+	<div id="cusFunArea">
+	<!-- custom level making -->
+	<div class="cusFun" bgcolor="green">
+		<div class="ex">
+	    <p>ReadMe:</p>
+	    <table id="exTable">
+	      <h1>
+	      <tr>
+	        <td>(11)</td>
+	        <td>(12)</td>
+	        <td>(13)</td>
+	      </tr>
+	      <tr>
+	        <td>(21)</td>
+	        <td>(22)</td>
+	        <td>(23)</td>
+	      </tr>
+	      <tr>
+	        <td>(31)</td>
+	        <td>(32)</td>
+	        <td>(33)</td>
+	      </tr>
+	      </h1>
+	    </table>
+	    <p>As shown in the above example of game level structure,<br />
+	      there will always a rectangular area to play in.</p>
+	    <p>The block ID will assign like " rowNumb colNumb i "(no space in between).
+	    <br /> Example: 32i = 3rd row and 2nd column</p>
+	  </div>
+		<div class="mkrIps">
+
+				levelNumber:<input type="number" id="lv0"> <br>
+				initialUFOLocation:<input type="number" id="lv1"> <br>
+				initialUFODegree:<input type="number" id="lv2"> <br>
+				levelWidth:<input type="number" id="lv3"> <br>
+				levelHeight:<input type="number" id="lv4"> <br>
+				mainFunInputNumber:<input type="number" id="lv5"> <br>
+				fun1InputNumber:<input type="number" id="lv6"> <br>
+				fun2InputNumber:<input type="number" id="lv7"> <br>
+
+				NumberOfTraps:<input type="number" id="lv8">
+				<button onclick="createNumIps(trapNums,lv8)">Go>></button> <br>
+				<div id="trapNums">
+
+				</div> <br>
+				NumberOfDiamonds:<input type="number" id="lv9">
+				<button onclick="createNumIps(DimNums,lv9)">Go>></button> <br>
+				<div id="DimNums">
+
+				</div> <br>
+
+			<button onclick="createLev()">Create</button>
+		</div>
+
+		<div id="levScript">
+
+		</div>
+	</div>
 </div>
-
-	<zk>Your Score:</zk>
-	<zk id="pnt">0</zk>
-	<zk>/</zk>
-	<zk id="maxPnt">0</zk>
-
-<!-- user input Display panels -->
-	<div id="ul_div">
-		<!-- main func. input Display panel -->
-				<hr />
-				<jp id="mainFuntxt1">main(<as id="mt"></as>) {</jp> <br />
-		<div id="ulMain" onclick="selulm()">
-			<!-- now dynamic ulIp mkr
-			<img id="ul1" src="img/ti.png">
-			<img id="ul2" src="img/ti.png">
-			<img id="ul3" src="img/ti.png">
-			<img id="ul4" src="img/ti.png">
-			<img id="ul5" src="img/ti.png">
-			<img id="ul6" src="img/ti.png">
-			<img id="ul7" src="img/ti.png">
-			<img id="ul8" src="img/ti.png">
-			<img id="ul9" src="img/ti.png">
-			<img id="ul10" src="img/ti.png">
-			<img id="ul11" src="img/ti.png">
-			<img id="ul12" src="img/ti.png">
-			<img id="ul13" src="img/ti.png">
-			<img id="ul14" src="img/ti.png">
-			<img id="ul15" src="img/ti.png">
-		-->
-		</div>
-				<br />
-				<jp id="mainFuntxt2"> } </jp>
-
-	<!-- func.1 input Display panel -->
-		<hr />
-		<jp id="Fun1txt1">fun1(<as id="f1t"></as>) {</jp> <br />
-		<div id="ulF1" onclick="selulf1()">
-			<!--
-			<img id="1ul1" src="img/ti.png">
-			<img id="1ul2" src="img/ti.png">
-			<img id="1ul3" src="img/ti.png">
-			<img id="1ul4" src="img/ti.png">
-			<img id="1ul5" src="img/ti.png">
-			<img id="1ul6" src="img/ti.png">
-			<img id="1ul7" src="img/ti.png">
-			<img id="1ul8" src="img/ti.png">
-			<img id="1ul9" src="img/ti.png">
-			<img id="1ul10" src="img/ti.png">
-			<img id="1ul11" src="img/ti.png">
-			<img id="1ul12" src="img/ti.png">
-			<img id="1ul13" src="img/ti.png">
-			<img id="1ul14" src="img/ti.png">
-			<img id="1ul15" src="img/ti.png">
-		-->
-		</div>
-		<br />
-		<jp id="Fun1txt2"> } </jp>
-
-		<!-- func.2 input Display panel -->
-		<hr />
-		<jp id="Fun2txt1">fun2(<as id="f2t"></as>) {</jp>	<br />
-		<div id="ulF2" onclick="selulf2()">
-			<!--
-			<img id="2ul1" src="img/ti.png">
-			<img id="2ul2" src="img/ti.png">
-			<img id="2ul3" src="img/ti.png">
-			<img id="2ul4" src="img/ti.png">
-			<img id="2ul5" src="img/ti.png">
-			<img id="2ul6" src="img/ti.png">
-			<img id="ul7" src="img/ti.png">
-			<img id="2ul8" src="img/ti.png">
-			<img id="2ul9" src="img/ti.png">
-			<img id="2ul10" src="img/ti.png">
-			<img id="2ul11" src="img/ti.png">
-			<img id="2ul12" src="img/ti.png">
-			<img id="2ul13" src="img/ti.png">
-			<img id="2ul14" src="img/ti.png">
-			<img id="2ul15" src="img/ti.png">
-		-->
-		</div>
-		<br />
-		<jp id="Fun2txt2"> } </jp>
-	</div>
-	<hr />
-
-<!--input buttons-->
-	<div class="ipbuts">
-		<img id="ruBut" src="img/ru.png" onclick="runUl()">
-		<img id="" src="img/bk.png" onclick="()">
-		<img id="f1But" src="img/re.png" onclick="levSel()">
-		<br>
-		<img id="leBut" src="img/up.png" onclick="moFwd()">
-		<img id="upBut" src="img/rl.png" onclick="moRl()">
-		<img id="doBut" src="img/rr.png" onclick="moRr()">
-		<!-- grab button !-not working -->
-		<img id="riBut" src="img/gr.png" onclick="moGr()">
-		<img id="grBut" src="img/f1.png" onclick="moF1()">
-		<img id="grBut" src="img/f2.png" onclick="moF2()">
-	</div>
-
-<!-- audio files loader -->
-	<div class="auds">
-		<audio id="grbAud">
-			<source src="aud/grabWav.wav" type="audio/wav">
-		</audio>
-		<audio id="movAud">
-			<source src="aud/moveMp3.mp3" type="audio/mp3">
-		</audio>
-		<audio id="bgAud">
-			<source src="aud/bgMp3.mp3" type="audio/mp3">
-		</audio>
-	</div>
-
 </body>

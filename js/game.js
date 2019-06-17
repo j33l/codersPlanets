@@ -27,6 +27,7 @@ var avlLev=0; // available levels
 var point=0;
 var bg=1; // music on/off
 var mnu=1; // three line menu on/off
+var gof=0; // game or custom function making
 
 var d = 0; //dim index
 var allDims = []; //all dim.s of cur. lev.
@@ -161,20 +162,9 @@ function init() {
 	  document.getElementById("ulMain").style.display="block";
 		document.getElementById("ulF1").style.display="block";
 		document.getElementById("ulF2").style.display="block";
-
-}
-
-function bgMusic(){
-	if (bg==1){
-		document.getElementById("bgAud").play();
-		document.getElementById("onoff").innerHTML="on";
-		bg=0;
-	}
-	else if (bg==0) {
-		document.getElementById("bgAud").pause();
-		document.getElementById("onoff").innerHTML="off";
-		bg=1;
-	}
+		document.getElementById("gameArea").style.display = "block";
+		document.getElementById("cusFunArea").style.display = "none";
+		document.getElementById("bgMusic").play();
 }
 
 function help() {
@@ -230,7 +220,7 @@ function moLeRun() {
 			}
 		}
 		curLoc=ufoTile;
-		moveAud();
+		//moveAud();
 		console.log("ufoTile->>>"+ufoTile);
 		console.log("curLoc->>>"+curLoc);
 	}
@@ -364,7 +354,7 @@ function moRiRun() {
 			}
 		}
 		curLoc=ufoTile;
-		moveAud();
+		moveSound();
 		console.log("ufoTile->>>"+ufoTile);
 		console.log("curLoc->>>"+curLoc);
 	}
@@ -404,7 +394,7 @@ function moGrRun() {
 		if (curLoc == allDims[o]) {
 			point++;
 			document.getElementById("pnt").innerHTML=point;
-			grbAud();
+			//grbAud();
 			allDims[o] = "";
 		}
 	}
@@ -535,10 +525,44 @@ function rtnccw() {
 	}
 }
 
-function grbAud(){
-	document.getElementById("grbAud").play();
+// audio finctions
+function winSound(){
+	document.getElementById("winSound").play();
+}
+function lostSound(){
+	document.getElementById("lostSound").play();
+}
+function moveSound(){
+	document.getElementById("moveSound").play();
+}
+function grabSound(){
+	document.getElementById("grabSound").play();
 }
 
-function moveAud(){
-	document.getElementById("grbAud").play();
+function bgMusicControl(){
+	if (bg==0){
+		document.getElementById("bgMusic").play();
+		document.getElementById("onoff").innerHTML=" off";
+		bg=1;
+	}
+	else if (bg==1) {
+		document.getElementById("bgMusic").pause();
+		document.getElementById("onoff").innerHTML=" on";
+		bg=0;
+	}
+}
+
+function gmeOrFun() {
+	if(gof==0){
+		document.getElementById('gameArea').style.display = "none";
+		document.getElementById('cusFunArea').style.display = "block";
+		document.getElementById("gof").innerHTML=" Game Play";
+		gof=1;
+	}
+	else{
+		document.getElementById('gameArea').style.display = "block";
+		document.getElementById('cusFunArea').style.display = "none";
+		document.getElementById("gof").innerHTML=" Custom Area";
+		gof=0;
+	}
 }
