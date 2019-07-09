@@ -141,12 +141,13 @@ function createLev() {
   var ele = document.getElementById('levScript');
   ele.appendChild(scr);
 }
-/*
+// changed by Zk via mob3 at clg
 function createNumIps(var numId, var ipNum){
   var j = document.getElementById(ipNum).value;
-  var k = document.getElementById(numId).innerHTML;
+  var k;
   for (var i = 0; i < j; i++) {
-    k += `<input type="number" id="lv9">`;
+    k += `<input type="number" id="">`;
   }
+	document.getElementById(numId).innerHTML = k;
 }
-*/
+
