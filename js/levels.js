@@ -121,7 +121,8 @@ function createLev() {
 
 function createLev() {
   var levVals = [];
-  var size =10;
+  var size =7;
+  var k ="console.log('DOdoDodo') ";
   for (var i = 0; i < size; i++) {
     levVals[i] = document.getElementById('lv'+i+"").value;
   }
@@ -136,18 +137,26 @@ function createLev() {
       ulMkr(` + levVals[7] +`,"ulF2");
       trapMaker("` + levVals[8] +`i");
       dimMaker("` + levVals[9] +`i");
-    }`);
+
+     }`);
   scr.appendChild(cont);
   var ele = document.getElementById('levScript');
   ele.appendChild(scr);
   window.alert("custom level "+levVals[0]+" created.");
 }
 
-function createNumIps(numId, ipNum){
-  var j = document.getElementById(ipNum).value;
-  var k;
-  for (var i = 0; i < j; i++) {
-    k += `<input type="number" id="">`;
+function createNumIps(divId, ipNum){
+  var num = document.getElementById(ipNum).value;
+  for (var i = 0; i < num; i++) {
+    var ele = document.getElementById(divId);
+    var pr = document.createElement("txt");
+    var displayNumber = document.createTextNode((i+1)+"th "+divId+" location:");
+    pr.appendChild(displayNumber);
+    ele.appendChild(pr);
+    var dv = document.createElement("input");
+    dv.setAttribute("type", "number");
+    dv.setAttribute("class", divId+"Vals");
+    ele.appendChild(dv);
+    ele.appendChild(document.createElement("br"));
   }
-	document.getElementById(numId).innerHTML = k;
 }
