@@ -93,38 +93,23 @@ function levChanger() {
 }
 */
 
-//##################################tbc###########################
 // for user custom level making functining
 function createLev() {
   var levVals = [];
-  var size =10;
+  var size =7;
+  var t ="";
   for (var i = 0; i < size; i++) {
     levVals[i] = document.getElementById('lv'+i+"").value;
   }
-  document.getElementById("levScript").innerHTML = `
-    <script type="text/jacascript">
-      function lev` + levVals[0] + `C() {
-        curLoc = "` + levVals[1] + `i";
-        curDeg =` +levVals[2] + `;
-        levMkr(` + levVals[3] +`,`+ levVals[4] + `);
-        ulMkr(` + levVals[5] +`,"ulMain");
-        ulMkr(` + levVals[6] +`,"ulF1");
-        ulMkr(` + levVals[7] +`,"ulF2");
-        trapMaker("` + levVals[8] +`i");
-        dimMaker("` + levVals[9] +`i");
-
-
-      }
-    </script>
-  `;
-}
-
-function createLev() {
-  var levVals = [];
-  var size =7;
-  var k ="console.log('DOdoDodo') ";
-  for (var i = 0; i < size; i++) {
-    levVals[i] = document.getElementById('lv'+i+"").value;
+  var trapNumsMax = document.getElementById("lv8").value;
+  for (i = 0; i < trapNumsMax; i++) {
+    var val = document.getElementsByClassName('trapNumsVals')[i].value;
+    t += `trapMaker("` + val +`i");`;
+  }
+  var dimNumsMax = document.getElementById("lv9").value;
+  for (i = 0; i < dimNumsMax; i++) {
+    var val = document.getElementsByClassName('dimNumsVals')[i].value;
+    t += `dimMaker("` + val +`i");`;
   }
   var scr = document.createElement("script");
   var cont = document.createTextNode(`
@@ -135,9 +120,8 @@ function createLev() {
       ulMkr(` + levVals[5] +`,"ulMain");
       ulMkr(` + levVals[6] +`,"ulF1");
       ulMkr(` + levVals[7] +`,"ulF2");
-      trapMaker("` + levVals[8] +`i");
-      dimMaker("` + levVals[9] +`i");
-
+      `+t+`
+      `+d+`
      }`);
   scr.appendChild(cont);
   var ele = document.getElementById('levScript');
@@ -145,6 +129,7 @@ function createLev() {
   window.alert("custom level "+levVals[0]+" created.");
 }
 
+// to create custom numbers of input fields for like trap or dimonds location
 function createNumIps(divId, ipNum){
   var num = document.getElementById(ipNum).value;
   for (var i = 0; i < num; i++) {
