@@ -140,13 +140,13 @@ function createLev() {
   scr.appendChild(cont);
   var ele = document.getElementById('levScript');
   ele.appendChild(scr);
+  window.alert("custom level "+levVals[0]+" created.");
 }
-/*
-function createNumIps(var numId, var ipNum){
+
+function createNumIps(numId, ipNum){
   var j = document.getElementById(ipNum).value;
   var k = document.getElementById(numId).innerHTML;
   for (var i = 0; i < j; i++) {
     k += `<input type="number" id="lv9">`;
   }
 }
-*/
